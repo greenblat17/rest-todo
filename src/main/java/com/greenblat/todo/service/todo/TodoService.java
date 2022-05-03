@@ -1,4 +1,4 @@
-package com.greenblat.todo.service;
+package com.greenblat.todo.service.todo;
 
 import com.greenblat.todo.model.Todo;
 

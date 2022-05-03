@@ -1,7 +1,7 @@
 package com.greenblat.todo.controller;
 
 import com.greenblat.todo.model.Todo;
-import com.greenblat.todo.service.TodoService;
+import com.greenblat.todo.service.todo.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/todos")
-public class TodoRestController {
+public class TodoController {
 
     @Autowired
     private TodoService todoService;
@@ -19,14 +19,12 @@ public class TodoRestController {
     @GetMapping("/")
     public ResponseEntity<List<Todo>> getAllTodos() {
         List<Todo> allTodos =  todoService.getAll();
-        System.out.println(allTodos);
         return new ResponseEntity<>(allTodos, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Todo> getOneTodo(@PathVariable("id") long id) {
         Todo todo = todoService.getById(id);
-        System.out.println(todo);
         return new ResponseEntity<>(todo, HttpStatus.OK);
     }
 
